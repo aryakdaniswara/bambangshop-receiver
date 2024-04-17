@@ -77,7 +77,7 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [x] Commit: `Implement receive function in Notification controller.`
     -   [x] Commit: `Implement list_messages function in Notification service.`
     -   [x] Commit: `Implement list function in Notification controller.`
-    -   [ ] Write answers of your learning module's "Reflection Subscriber-2" questions in this README.
+    -   [x] Write answers of your learning module's "Reflection Subscriber-2" questions in this README.
 
 ## Your Reflections
 This is the place for you to write reflections:
@@ -95,3 +95,15 @@ Pada Rust, terdapat enforce pada thread-safe. Hal ini menyebabkan pada statis me
 
 
 #### Reflection Subscriber-2
+1. Have you explored things outside of the steps in the tutorial, for example: src/lib.rs? If not, explain why you did not do so. If yes, explain things that you have learned from those other parts of code.
+
+Saya telah mengekspolrasi bagian lain dari proyek ini du luar dari tutorial. Salah satunya adalah src/lib.rs. File tersebut berguna sebagai tempat penyimpanan library yang akan digunakan dalam proyek Rust. File ini berisi kode-kode yang dapat digunakan ulang atau struktur yang mengatur penyimpanan data. Dalam file ini, kita juga dapat mengatur aksesibilitasnya menjadi private atau pub untuk public. Contohnya pada proyek ini terdapat pub type error yang di dalamnya di atur bagaimana respon dari error yang terjadi.
+
+
+2. Since you have completed the tutorial by now and have tried to test your notification system by spawning multiple instances of Receiver, explain how Observer pattern eases you to plug in more subscribers. How about spawning more than one instance of Main app, will it still be easy enough to add to the system?
+
+Dengan menggunakan pola Observer, penambahan Subscriber dapat dilakukan dnegan mudah. Setiap Subscriber yang ingin berlanggan hanya perlu ditambahkan pada suatu list tertentu saja tanpa perlu mengubah banyak kode yang ada. Akan tetapi, hal ini berbeda ketika kita memiliki lebih dari satu instance aplikasi utama. Pada kasus tersebut, aplikasi utama berjalan secara independen saja tanpa danya komunikasi satu sama lain. Jika ingin dilakukan sistem berbagi notifikasi diperlukan pengaturan untuk menambahkan penyimpanan bersama antar aplikasi utama.
+
+3. Have you tried to make your own Tests, or enhance documentation on your Postman collection? If you have tried those features, tell us whether it is useful for your work (it can be your tutorial work or your Group Project).
+
+Saya telah mencoba membuat tes sendiri padap Postman collection. Saya merasa fitur ini akan sangat berguna pada pengembangan proyek saya. Saya dapat mengecek fungsionalitas API yang sedang dikembangan agar sesuai dengan ekspekti yang saya inginkan. Saya dapat memeriksa status kode yang diberikan dan respons apa yang diberikan dari API yang saya buat.
