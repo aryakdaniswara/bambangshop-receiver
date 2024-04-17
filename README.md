@@ -66,7 +66,7 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [x] Commit: `Create Notification database and Notification repository struct skeleton.`
     -   [x] Commit: `Implement add function in Notification repository.`
     -   [x] Commit: `Implement list_all_as_string function in Notification repository.`
-    -   [ ] Write answers of your learning module's "Reflection Subscriber-1" questions in this README.
+    -   [x] Write answers of your learning module's "Reflection Subscriber-1" questions in this README.
 -   **STAGE 3: Implement services and controllers**
     -   [ ] Commit: `Create Notification service struct skeleton.`
     -   [ ] Commit: `Implement subscribe function in Notification service.`
@@ -85,5 +85,13 @@ This is the place for you to write reflections:
 ### Mandatory (Subscriber) Reflections
 
 #### Reflection Subscriber-1
+1. In this tutorial, we used RwLock<> to synchronise the use of Vec of Notifications. Explain why it is necessary for this case, and explain why we do not use Mutex<> instead?
+
+Pengunaan RwLock<> pada kasus ini bertujuan untuk memberikan kapabilitas sehingga lebih dari 1 thread dapat membaca data secara bersamaan. Akan tetapi akses penulisan dibatasan hanya pada 1 thread saja pada 1 waktu. Alasan kita tidak menggunakan Mutex<> adalah karena sistemnya yang berbeda. Mutex<> membatasi akses membaca dan menulis pada 1 thread saja sehingga tidak dapat melakukan proses dengan beberapa thread sekaligus. Penggunaan RwLock<> membuat proses lebih efisien di kasus ini karena pembacaan data dapat dilaksankan oleh beberapa thread sekaligus.
+
+2. In this tutorial, we used lazy_static external library to define Vec and DashMap as a “static” variable. Compared to Java where we can mutate the content of a static variable via a static function, why did not Rust allow us to do so?
+
+Pada Rust, terdapat enforce pada thread-safe. Hal ini menyebabkan pada statis menjadi immutable secara default. Keterbatasan ini diatasi dengan menggunakan lazy_static yang dapat mendefinisikan terlebih dahulu variable static namun menunda inisialisasinya. Hal ini dapat memperbaiki performa dengan penundaan inisialisasi variabel tersebut. Hal ini berbeda dengan Java, di mana variabel statis dapat diubah langsung dan thread-safety tidak dienforce seketat Rust.
+
 
 #### Reflection Subscriber-2
